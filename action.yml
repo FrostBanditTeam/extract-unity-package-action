@@ -1,21 +1,14 @@
-name: 'Extract Unity Package'
-description: 'Extracts a unity package'
-inputs:
-  projectPath:
-    required: true
-    description: 'Path to the Unity project to be tested.'
-  packageRootPath:
-    required: true
-    description: 'Path to the root folder of the package to extract.'
-  artifactsPath:
-    required: false
-    default: 'artifacts'
-    description: 'Path where test artifacts should be stored.'
-outputs:
-  artifactsPath:
-    description: 'Path where the artifacts are stored'
+# action.yml
+name: 'Export Unity Package'
+description: 'Export Unity Package'
+#inputs:
+#  who-to-greet:  # id of input
+#    description: 'Who to greet'
+#    required: true
+#    default: 'World'
+#outputs:
+#  time: # id of output
+#    description: 'The time we greeted you'
 runs:
-  using: "composite"
-  steps:
-    - run: ${{ github.action_path }}/action.sh
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
