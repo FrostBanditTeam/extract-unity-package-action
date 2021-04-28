@@ -1,6 +1,6 @@
 # action.yml
-name: 'Export Unity Package'
-description: 'Export Unity Package'
+name: 'Export .unitypackage from Unity Project'
+description: 'Uses Unity Package Exporter by Lachee to export a .unitypackage file from a Unity Project.'
 inputs:
   unityProjectPath:
     description: 'Path to the unity project'
