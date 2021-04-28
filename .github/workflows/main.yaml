@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  extract_unity_package:
+    runs-on: ubuntu-latest
+    name: extract_unity_package
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Extract unity package
+      id: extract
+      uses: ./
+      with:
+        unityProjectPath: './TestProject'
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: Output package
+        path: ${{ steps.extract.outputs.artifactsPath }}

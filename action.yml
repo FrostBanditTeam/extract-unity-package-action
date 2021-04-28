@@ -1,14 +1,26 @@
 # action.yml
 name: 'Export Unity Package'
 description: 'Export Unity Package'
-#inputs:
-#  who-to-greet:  # id of input
-#    description: 'Who to greet'
-#    required: true
-#    default: 'World'
-#outputs:
-#  time: # id of output
-#    description: 'The time we greeted you'
+inputs:
+  unityProjectPath:
+    description: 'Path to the unity project'
+    required: true
+    default: './'
+  packagePath:
+    description: 'Project relative path to be packaged.'
+    required: false
+    default: 'Assets'
+  outputPackagePath:
+    description: 'Path to the output package'
+    required: false
+    default: './artifacts/output.unitypackage'
+outputs:
+  artifactsPath:
+    description: 'Path to the output package'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.unityProjectPath }}
+    - ${{ inputs.packagePath }}
+    - ${{ inputs.outputPackagePath }}
